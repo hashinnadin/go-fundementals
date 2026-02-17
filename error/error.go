@@ -336,43 +336,49 @@
 //		go Oddnum(oddChan, evenChan, &wg)
 //		evenChan <- true
 //		wg.Wait()
-//	}
+// //	}
+// package main
+
+// import (
+// 	"fmt"
+// 	"sync"
+// )
+
+// func printEven(oddChan, evenChan chan bool, wg *sync.WaitGroup) {
+// 	defer wg.Done()
+// 	for i := 2; i <= 10; i += 2 {
+// 		<-evenChan
+// 		fmt.Println("Even Number:", i)
+// 		oddChan <- true
+// 	}
+// }
+
+// func printOdd(oddChan, evenChan chan bool, wg *sync.WaitGroup) {
+// 	defer wg.Done()
+// 	for i := 1; i <= 9; i += 2 {
+// 		<-oddChan
+// 		fmt.Println("Odd:", i)
+// 		evenChan <- true
+// 	}
+// }
+
+// func main() {
+// 	evenChan := make(chan bool)
+// 	oddChan := make(chan bool)
+
+// 	var wg sync.WaitGroup
+// 	wg.Add(2)
+
+// 	go printEven(oddChan, evenChan, &wg)
+// 	go printOdd(oddChan, evenChan, &wg)
+
+// 	oddChan <- true // start with odd
+
+// 	wg.Wait()
+// }
+
 package main
 
-import (
-	"fmt"
-	"sync"
-)
-
-func printEven(oddChan, evenChan chan bool, wg *sync.WaitGroup) {
-	defer wg.Done()
-	for i := 2; i <= 10; i += 2 {
-		<-evenChan
-		fmt.Println("Even Number:", i)
-		oddChan <- true
-	}
-}
-
-func printOdd(oddChan, evenChan chan bool, wg *sync.WaitGroup) {
-	defer wg.Done()
-	for i := 1; i <= 9; i += 2 {
-		<-oddChan
-		fmt.Println("Odd:", i)
-		evenChan <- true
-	}
-}
-
 func main() {
-	evenChan := make(chan bool)
-	oddChan := make(chan bool)
 
-	var wg sync.WaitGroup
-	wg.Add(2)
-
-	go printEven(oddChan, evenChan, &wg)
-	go printOdd(oddChan, evenChan, &wg)
-
-	oddChan <- true // start with odd
-
-	wg.Wait()
 }
