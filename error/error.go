@@ -999,4 +999,10 @@
 // 	}
 // }
 
-//lln package handle go rutine ,, fan in fan out gorutine package, workerfool,
+//lln package handle go rutine ,, fan in fan out gorutine package, workerfool
+
+package main
+
+func main() {
+
+}
